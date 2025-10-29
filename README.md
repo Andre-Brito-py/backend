@@ -23,6 +23,7 @@ CORS_ORIGINS=https://seu-frontend.vercel.app,http://localhost:3000
 - `npm run prisma:push` — aplicar schema no banco
 - `npm run prisma:seed` — dados de exemplo (admin + vendas)
 - `npm run reset:db` — limpa vendas e usuários não-ADMIN (mantém admin)
+- `npm run clear:sales` — remove todas as vendas (Sale, SaleItem, SaleItemAdditional)
 
 ## Fluxo de Setup Local
 ```bash
@@ -80,6 +81,11 @@ pm install,
 px prisma generate, 
 px prisma db push, depois 
 pm start.
+
+### Limpeza de vendas diretamente (Neon ou local)
+- Configure `DATABASE_URL` no `.env`.
+- Execute `npm run clear:sales` para apagar registros de `Sale`, `SaleItem` e `SaleItemAdditional`.
+- Observação: a limpeza não ajusta automaticamente o estoque de produtos. Se precisar, implemente reconciliação de estoque ou defina `stock = -1` para estoque ilimitado.
 
 ### Observações
 - sslmode=require é necessário com Neon.
